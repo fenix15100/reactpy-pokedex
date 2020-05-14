@@ -1,25 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React,{useEffect,useState,Fragment} from 'react';
 
-function App() {
+
+const App = ()=> {
+
+  const [statusApi,setStatusApi] = useState({});
+
+  useEffect(() => {
+    //Prove connection to Backend API
+    const getProveAPI = async ()=>{
+      let request = await fetch("/api/v1/status");
+      if (request.status === 200){
+        let response = await request.json()
+        setStatusApi(response);
+      }else{
+        console.error("error de conexion contra la API");
+      }
+    }
+    getProveAPI();
+      
+  },[]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <p>Prueba de conectivad contra la API:</p>
+      <br/>
+      <p>{JSON.stringify(statusApi)}</p>
+    </Fragment>
   );
 }
 
