@@ -20,7 +20,7 @@ def status():
 @app.route("/", defaults={'path': ''})
 @app.route("/<path:path>")
 @app.route("/<string:path>")
-@app.route("/<path:path>/<string:path>")
+@app.route("/<path:path>/<string:path2>")
 def serve(path):
     return send_from_directory('./build','index.html')
 
