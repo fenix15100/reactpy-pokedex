@@ -32,14 +32,26 @@ def getPokemons():
   
 
 '''
-Get pokemon by name
+Get Full information from pokemon by name
 Example: /api/v1/getPokemonByName/pikachu
 Get from Remote API a Pikachu Object
 '''
-@app.route('/api/v1/getPokemonByName/<string:name>')
-def getPokemonByName(name):
+@app.route('/api/v1/getFullInfoPokemonByName/<string:name>')
+def getFullInfoPokemonByName(name):
     r = requests.get(f"https://pokeapi.co/api/v2/pokemon/{name}")
     return jsonify(r.json())
+
+
+'''
+Get Full information from pokemon by id 
+Example: /api/v1/getPokemonByName/1
+Get from Remote API a Pokemon number 1
+'''
+@app.route('/api/v1/getFullInfoPokemonById/<int:id>')
+def getFullInfoPokemonById(id):
+    r = requests.get(f"https://pokeapi.co/api/v2/pokemon/{id}")
+    return jsonify(r.json())
+
 
 
 #Handles any requests that don't match the ones above and redirect to react static client route system
