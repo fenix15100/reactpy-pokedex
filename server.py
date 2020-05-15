@@ -18,7 +18,7 @@ def status():
 
 #Handles any requests that don't match the ones above and redirect to react static client route system
 @app.route("/", defaults={'path': ''})
-@app.route("/<path:path>/<string:path2>")
+@app.route("/<path:path>")
 @app.route("/<string:path>")
 def serve(path):
     return send_from_directory('./build','index.html')
