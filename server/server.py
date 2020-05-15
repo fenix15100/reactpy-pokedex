@@ -53,6 +53,26 @@ def getFullInfoPokemonById(id):
     return jsonify(r.json())
 
 
+'''
+Get Basic information from pokemon by name
+Example: /api/v1/getBasicInfoPokemonByName/pikachu
+Get from Remote API a Pikachu Object
+'''
+@app.route('/api/v1/getBasicInfoPokemonByName/<string:name>')
+def getBasicInfoPokemonByName(name):
+    return "HOLA"
+    return jsonify({"name":"/api/v1/getBasicInfoPokemonByName","method":"Not implemented for now"})
+
+'''
+Get Basic information from pokemon by id
+Example: /api/v1/getBasicInfoPokemonByName/1
+Get from Remote API a Pokemon number 1
+'''
+@app.route('/api/v1/getBasicInfoPokemonById/<int:id>')
+def getBasicInfoPokemonById(id):
+    
+    return jsonify({"name":"/api/v1/getBasicInfoPokemonById","method":"Not implemented for now"})
+
 
 #Handles any requests that don't match the ones above and redirect to react static client route system
 @app.route("/", defaults={'path': ''})
