@@ -4,7 +4,7 @@ from flask import Flask,Response,jsonify,request
 from flask import send_from_directory
 
 
-app = Flask(__name__,static_folder='./build', static_url_path='/')
+app = Flask(__name__,static_folder='./../build', static_url_path='/')
 app.config['DEBUG'] = True
 
 @app.route('/api/v1/status')
@@ -59,7 +59,7 @@ def getFullInfoPokemonById(id):
 @app.route("/<path:path>")
 @app.route("/<string:path>")
 def serve(path):
-    return send_from_directory('./build','index.html')
+    return send_from_directory('./../build','index.html')
 
 
 # Entry Point for the app
