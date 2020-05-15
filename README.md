@@ -6,3 +6,5 @@ Flask App like wrapper of pokeapi.co endpoints and serve static react files.
 
 ## Deploy in:
 [https://reactpy-pokedex.herokuapp.com/](https://reactpy-pokedex.herokuapp.com/)
+
+Copyright
