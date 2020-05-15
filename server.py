@@ -29,6 +29,15 @@ def getPokemons():
     r = requests.get(f"https://pokeapi.co/api/v2/pokemon/?offset={offsetParam}&limit={limitParam}")
     return jsonify(r.text)
 
+'''
+Get pokemon by name
+Example: /api/v1/getPokemonByName/pikachu
+Get from Remote API a Pikachu Object
+'''
+@app.route('/api/v1/getPokemonByName/<string:name>')
+def getPokemonByName(name):
+    r = requests.get(f"https://pokeapi.co/api/v2/pokemon/{name}")
+    return jsonify(r.text)
 
 
 #Handles any requests that don't match the ones above and redirect to react static client route system
