@@ -33,7 +33,7 @@ def getPokemons():
 
 '''
 Get Full information from pokemon by name
-Example: /api/v1/getPokemonByName/pikachu
+Example: /api/v1/getFullInfoPokemonByName/pikachu
 Get from Remote API a Pikachu Object
 '''
 @app.route('/api/v1/getFullInfoPokemonByName/<string:name>')
@@ -44,7 +44,7 @@ def getFullInfoPokemonByName(name):
 
 '''
 Get Full information from pokemon by id 
-Example: /api/v1/getPokemonByName/1
+Example: /api/v1/getFullInfoPokemonById/1
 Get from Remote API a Pokemon number 1
 '''
 @app.route('/api/v1/getFullInfoPokemonById/<int:id>')
