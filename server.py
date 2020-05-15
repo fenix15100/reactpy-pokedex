@@ -17,7 +17,7 @@ def status():
     return jsonify(status)
 
 #Handles any requests that don't match the ones above and redirect to react static client route system
-@app.route("/2", defaults={'path': ''})
+@app.route("/", defaults={'path': ''})
 @app.route("/<path:path>")
 @app.route("/<string:path>")
 @app.route("/<path:path>/<string:path>")
