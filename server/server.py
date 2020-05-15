@@ -60,7 +60,7 @@ Get from Remote API a Pikachu Object
 '''
 @app.route('/api/v1/getBasicInfoPokemonByName/<string:name>')
 def getBasicInfoPokemonByName(name):
-    return "HOLA"
+    
     return jsonify({"name":"/api/v1/getBasicInfoPokemonByName","method":"Not implemented for now"})
 
 '''
