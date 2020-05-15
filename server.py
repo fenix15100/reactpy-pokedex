@@ -1,5 +1,6 @@
 import os
-from flask import Flask,Response,jsonify
+import requests
+from flask import Flask,Response,jsonify,request
 from flask import send_from_directory
 
 
@@ -15,6 +16,20 @@ def status():
     }
     
     return jsonify(status)
+
+'''
+Get all Pokemons entries can send offset and limit param in querystring format
+Example: /api/v1/getPokemons?offset=0&limit=20
+Get from pokemon number 0 and retrieve 20 pokemons more
+'''
+@app.route('/api/v1/getPokemons')
+def getPokemons():
+    offsetParam = request.args.get('offset',default="0",type = str)
+    limitParam = request.args.get('limit',default="964",type = str)
+    r = requests.get(f"https://pokeapi.co/api/v2/pokemon/?offset={offsetParam}&limit={limitParam}")
+    return jsonify(r.text)
+
+
 
 #Handles any requests that don't match the ones above and redirect to react static client route system
 @app.route("/", defaults={'path': ''})
