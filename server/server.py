@@ -1,4 +1,5 @@
 import os
+import json
 import requests
 from flask import Flask,Response,jsonify,request
 from flask import send_from_directory
@@ -60,8 +61,33 @@ Get from Remote API a Pikachu Object
 '''
 @app.route('/api/v1/getBasicInfoPokemonByName/<string:name>')
 def getBasicInfoPokemonByName(name):
+    data = {}
+    req = requests.get(f"https://pokeapi.co/api/v2/pokemon/{name}")
+    res = json.loads(req.text)
+
+    data['name'] = res['name']
+    data['abilities'] = []
     
-    return jsonify({"name":"/api/v1/getBasicInfoPokemonByName","method":"Not implemented for now"})
+
+    for abi in res['abilities']:
+        name = abi['ability']['name']
+        is_hidden = abi['is_hidden']
+
+        req2 = requests.get(abi['ability']['url'])
+        res2 = json.loads(req2.text)
+        effect = res2['effect_entries'][0]['effect']
+
+        data['abilities'].append({"name":name,"is_hidden":is_hidden,"effect":effect})
+
+    data['height'] = res['height']
+    data['weight'] = res['weight']
+    data['sprites'] = res['sprites']
+        
+    data['types'] = []
+    for type in res['types']:
+        data['types'].append({"name":type['type']['name'],"slot":type['slot']})
+    
+    return jsonify(data)
 
 '''
 Get Basic information from pokemon by id
@@ -70,8 +96,33 @@ Get from Remote API a Pokemon number 1
 '''
 @app.route('/api/v1/getBasicInfoPokemonById/<int:id>')
 def getBasicInfoPokemonById(id):
+    data = {}
+    req = requests.get(f"https://pokeapi.co/api/v2/pokemon/{id}")
+    res = json.loads(req.text)
+
+    data['name'] = res['name']
+    data['abilities'] = []
     
-    return jsonify({"name":"/api/v1/getBasicInfoPokemonById","method":"Not implemented for now"})
+
+    for abi in res['abilities']:
+        name = abi['ability']['name']
+        is_hidden = abi['is_hidden']
+
+        req2 = requests.get(abi['ability']['url'])
+        res2 = json.loads(req2.text)
+        effect = res2['effect_entries'][0]['effect']
+
+        data['abilities'].append({"name":name,"is_hidden":is_hidden,"effect":effect})
+
+    data['height'] = res['height']
+    data['weight'] = res['weight']
+    data['sprites'] = res['sprites']
+        
+    data['types'] = []
+    for type in res['types']:
+        data['types'].append({"name":type['type']['name'],"slot":type['slot']})
+    
+    return jsonify(data)
 
 
 #Handles any requests that don't match the ones above and redirect to react static client route system
