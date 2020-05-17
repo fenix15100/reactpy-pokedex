@@ -1,5 +1,5 @@
 import React,{useEffect,useState,Fragment} from 'react';
-
+import './App.css'
 
 const App = ()=> {
 
@@ -20,8 +20,8 @@ const App = ()=> {
       
   },[]);
   return (
-    <Fragment>
-      <p>Prueba de conectivad contra la API:</p>
+    <Fragment>      
+      <div className="container">Prueba de conectivad contra la API:</div>
       <br/>
       <p>{JSON.stringify(statusApi)}</p>
     </Fragment>
