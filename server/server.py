@@ -28,6 +28,8 @@ def getPokemons():
     offsetParam = request.args.get('offset',default="0",type = str)
     limitParam = request.args.get('limit',default="964",type = str)
     r = requests.get(f"https://pokeapi.co/api/v2/pokemon/?offset={offsetParam}&limit={limitParam}")
+
+    
     
     return jsonify(r.json())
   
@@ -91,7 +93,7 @@ def getBasicInfoPokemonByName(name):
 
 '''
 Get Basic information from pokemon by id
-Example: /api/v1/getBasicInfoPokemonByName/1
+Example: /api/v1/getBasicInfoPokemonById/1
 Get from Remote API a Pokemon number 1
 '''
 @app.route('/api/v1/getBasicInfoPokemonById/<int:id>')
