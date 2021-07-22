@@ -1,0 +1,32 @@
+.projects-grid{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  
+  .projects-grid .card{
+    width: 100%;
+    margin-top: 15px;
+    text-overflow: clip;
+  }
+  
+  .card-actions{
+    display: flex;
+    justify-content: space-between;
+  
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .projects-grid{
+        flex-direction: column;
+    }
+  
+    .projects-grid .card{
+      width: 50%;
+      align-self: center;
+    }
+    
+  
+  
+  }

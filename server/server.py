@@ -26,7 +26,7 @@ Get from pokemon number 0 and retrieve 20 pokemons more
 @app.route('/api/v1/getPokemons')
 def getPokemons():
     offsetParam = request.args.get('offset',default="0",type = str)
-    limitParam = request.args.get('limit',default="964",type = str)
+    limitParam = request.args.get('limit',default="151",type = str)
     r = requests.get(f"https://pokeapi.co/api/v2/pokemon/?offset={offsetParam}&limit={limitParam}")
 
     
