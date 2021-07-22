@@ -12,7 +12,6 @@ const Pokemon = ({pokemon})=> {
         if (request.status === 200){
             let response = await request.json()
             setDetails(response);
-            localStorage.setItem('reactpy-pokedex',JSON.stringify(response))
             setLoading(false)
         }else{
             console.error("error de conexion contra la API");
